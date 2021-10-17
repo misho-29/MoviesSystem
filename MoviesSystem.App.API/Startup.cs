@@ -2,12 +2,16 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MoviesSystem.Domain.Repositories;
 using MoviesSystem.ExternalService;
+using MoviesSystem.Infrastructure.Repositories;
+using MoviesSystem.Infrastructure.Store;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +32,11 @@ namespace MoviesSystem.App.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContextPool<MoviesDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IWatchListRepository, WatchListRepository>();
 
             services.AddSingleton<IMovieApiService, MovieApiService>();
             services.AddHttpClient("MoviesApi", options =>
