@@ -20,8 +20,8 @@ namespace MoviesSystem.App.API.Controllers
         {
         }
 
-        [HttpPatch("{userId}/watchlist/{movieId}")]
-        public void Patch(int userId, string movieId, [FromBody] bool isWatched)
+        [HttpPatch("{userId}/watchlist/{movieId}/watched")]
+        public void Patch(int userId, string movieId)
         {
         }
     }

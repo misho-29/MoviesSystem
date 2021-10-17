@@ -9,8 +9,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviesSystem.Domain.Repositories;
+using MoviesSystem.Domain.Services;
 using MoviesSystem.ExternalService;
+using MoviesSystem.Infrastructure.Mappers;
 using MoviesSystem.Infrastructure.Repositories;
+using MoviesSystem.Infrastructure.Services;
 using MoviesSystem.Infrastructure.Store;
 using System;
 using System.Collections.Generic;
@@ -36,7 +39,8 @@ namespace MoviesSystem.App.API
             services.AddDbContextPool<MoviesDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IWatchListRepository, WatchListRepository>();
+            services.AddScoped<IWatchlistService, WatchlistService>()
+                .AddScoped<IWatchlistRepository, WatchlistRepository>();
 
             services.AddSingleton<IMovieApiService, MovieApiService>();
             services.AddHttpClient("MoviesApi", options =>
@@ -48,6 +52,8 @@ namespace MoviesSystem.App.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesSystem.App.API", Version = "v1" });
             });
+
+            services.AddAutoMapper(typeof(WatchlistProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

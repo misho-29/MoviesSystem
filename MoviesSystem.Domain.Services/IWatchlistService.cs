@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesSystem.Domain.Repositories
+namespace MoviesSystem.Domain.Services
 {
-    public interface IWatchlistRepository
+    public interface IWatchlistService
     {
-        void Insert(int userId, string movieId);
+        void Add(int userId, string movieId);
         List<WatchlistItemGetModel> Get(int userId);
         void MarkAsWatched(int userId, string movieId);
     }

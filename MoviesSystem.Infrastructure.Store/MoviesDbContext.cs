@@ -10,7 +10,7 @@ namespace MoviesSystem.Infrastructure.Store
 {
     public class MoviesDbContext : DbContext
     {
-        public DbSet<WatchListItem> WatchList { get; set; }
+        public DbSet<WatchListItem> Watchlist { get; set; }
 
         public MoviesDbContext(DbContextOptions<MoviesDbContext> options) : base(options)
         {

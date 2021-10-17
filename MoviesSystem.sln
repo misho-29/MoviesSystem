@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.App.API", "MoviesSystem.App.API\MoviesSystem.App.API.csproj", "{AA095DC8-5806-4527-98A1-7ED38787837F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.App.API", "MoviesSystem.App.API\MoviesSystem.App.API.csproj", "{AA095DC8-5806-4527-98A1-7ED38787837F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{2E972618-2BDC-405C-848E-D7877EE14B1E}"
 EndProject
@@ -11,19 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{EC8D9F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2738356B-7A2B-46FD-A6A7-7004CB9CF7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Domain.Models", "MoviesSystem.Domain.Models\MoviesSystem.Domain.Models.csproj", "{CC72E8AD-68FB-4388-B893-347C475F9720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.Domain.Models", "MoviesSystem.Domain.Models\MoviesSystem.Domain.Models.csproj", "{CC72E8AD-68FB-4388-B893-347C475F9720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Domain.Services", "MoviesSystem.Domain.Services\MoviesSystem.Domain.Services.csproj", "{E9A4817E-1003-4394-9FB4-CDD00528BB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.Domain.Services", "MoviesSystem.Domain.Services\MoviesSystem.Domain.Services.csproj", "{E9A4817E-1003-4394-9FB4-CDD00528BB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Domain.Repositories", "MoviesSystem.Domain.Repositories\MoviesSystem.Domain.Repositories.csproj", "{F0012A5B-3BF9-4289-AA6E-7C83B261B20D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.Domain.Repositories", "MoviesSystem.Domain.Repositories\MoviesSystem.Domain.Repositories.csproj", "{F0012A5B-3BF9-4289-AA6E-7C83B261B20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Infrastructure.Store", "MoviesSystem.Infrastructure.Store\MoviesSystem.Infrastructure.Store.csproj", "{768EF0AC-04B4-4D62-9EC8-528E94F9803F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.Infrastructure.Store", "MoviesSystem.Infrastructure.Store\MoviesSystem.Infrastructure.Store.csproj", "{768EF0AC-04B4-4D62-9EC8-528E94F9803F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Infrastructure.Services", "MoviesSystem.Infrastructure.Services\MoviesSystem.Infrastructure.Services.csproj", "{7B12AEE8-45CB-4500-8390-7BE5CC154025}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.Infrastructure.Services", "MoviesSystem.Infrastructure.Services\MoviesSystem.Infrastructure.Services.csproj", "{7B12AEE8-45CB-4500-8390-7BE5CC154025}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Infrastructure.Repositories", "MoviesSystem.Infrastructure.Repositories\MoviesSystem.Infrastructure.Repositories.csproj", "{743CE057-B938-4451-8C34-E77738081314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.Infrastructure.Repositories", "MoviesSystem.Infrastructure.Repositories\MoviesSystem.Infrastructure.Repositories.csproj", "{743CE057-B938-4451-8C34-E77738081314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.ExternalService", "MoviesSystem.ExternalService\MoviesSystem.ExternalService.csproj", "{35E256F3-2055-4DA0-A23E-1F02B2979E88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoviesSystem.ExternalService", "MoviesSystem.ExternalService\MoviesSystem.ExternalService.csproj", "{35E256F3-2055-4DA0-A23E-1F02B2979E88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesSystem.Infrastructure.Mappers", "MoviesSystem.Infrastructure.Mappers\MoviesSystem.Infrastructure.Mappers.csproj", "{1AD965A5-21B3-4660-920D-341CDDA57238}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{35E256F3-2055-4DA0-A23E-1F02B2979E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E256F3-2055-4DA0-A23E-1F02B2979E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35E256F3-2055-4DA0-A23E-1F02B2979E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AD965A5-21B3-4660-920D-341CDDA57238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AD965A5-21B3-4660-920D-341CDDA57238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AD965A5-21B3-4660-920D-341CDDA57238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AD965A5-21B3-4660-920D-341CDDA57238}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{7B12AEE8-45CB-4500-8390-7BE5CC154025} = {2738356B-7A2B-46FD-A6A7-7004CB9CF7F1}
 		{743CE057-B938-4451-8C34-E77738081314} = {2738356B-7A2B-46FD-A6A7-7004CB9CF7F1}
 		{35E256F3-2055-4DA0-A23E-1F02B2979E88} = {2E972618-2BDC-405C-848E-D7877EE14B1E}
+		{1AD965A5-21B3-4660-920D-341CDDA57238} = {2738356B-7A2B-46FD-A6A7-7004CB9CF7F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FCD061C2-C7CD-43B2-918B-5CA0343F8C85}
