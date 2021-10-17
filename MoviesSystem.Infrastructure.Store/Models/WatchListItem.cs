@@ -11,6 +11,6 @@ namespace MoviesSystem.Infrastructure.Store.Models
         public int UserId { get; set; }
         public string MovieId { get; set; }
         public bool IsWatched { get; set; }
-        public DateTime LastNotificationDateTime { get; set; }
+        public DateTime? LastNotificationDateTime { get; set; }
     }
 }

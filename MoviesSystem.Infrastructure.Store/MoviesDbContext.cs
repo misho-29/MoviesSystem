@@ -22,6 +22,8 @@ namespace MoviesSystem.Infrastructure.Store
             modelBuilder.Entity<WatchListItem>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.MovieId });
+                entity.Property(e => e.IsWatched).IsRequired()
+                    .HasDefaultValue(false);
             });
 
             base.OnModelCreating(modelBuilder);
