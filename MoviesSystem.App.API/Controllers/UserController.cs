@@ -11,7 +11,17 @@ namespace MoviesSystem.App.API.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost("{userId}/watchlist")]
-        public void Post(string userId)
+        public void Post(string userId, [FromBody] string movieId)
+        {
+        }
+
+        [HttpGet("{userId}/watchlist")]
+        public void Get(string userId)
+        {
+        }
+
+        [HttpPatch("{userId}/watchlist/{movieId}")]
+        public void Patch(int userId, string movieId, [FromBody] bool isWatched)
         {
         }
     }
