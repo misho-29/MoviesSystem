@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MoviesSystem.Domain.Models\MoviesSystem.Domain.Models.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Domain.Repositories\MoviesSystem.Domain.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

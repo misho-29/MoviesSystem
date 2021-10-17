@@ -1,4 +1,5 @@
 ﻿using MoviesSystem.Domain.Models;
+using MoviesSystem.Domain.Repositories;
 using MoviesSystem.Domain.Services;
 using System;
 using System.Collections.Generic;
@@ -10,19 +11,26 @@ namespace MoviesSystem.Infrastructure.Services
 {
     public class WatchlistService : IWatchlistService
     {
+        private readonly IWatchlistRepository _watchlistRepository;
+
+        public WatchlistService(IWatchlistRepository watchlistRepository)
+        {
+            _watchlistRepository = watchlistRepository;
+        }
+
         public void Add(int userId, string movieId)
         {
-            throw new NotImplementedException();
+            _watchlistRepository.Insert(userId, movieId);
         }
 
         public List<WatchlistItemGetModel> Get(int userId)
         {
-            throw new NotImplementedException();
+            return _watchlistRepository.Get(userId);
         }
 
         public void MarkAsWatched(int userId, string movieId)
         {
-            throw new NotImplementedException();
+            _watchlistRepository.MarkAsWatched(userId, movieId);
         }
     }
 }
