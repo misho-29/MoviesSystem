@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MoviesSystem.App.EmailService;
 using MoviesSystem.Domain.Repositories;
 using MoviesSystem.Domain.Services;
 using MoviesSystem.ExternalService;
@@ -38,6 +39,12 @@ namespace MoviesSystem.App.API
 
             services.AddDbContextPool<MoviesDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            var emailConfig = Configuration
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
 
             services.AddScoped<IWatchlistService, WatchlistService>()
                 .AddScoped<IWatchlistRepository, WatchlistRepository>();
