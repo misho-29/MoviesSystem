@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviesSystem.App.EmailService;
+using MoviesSystem.App.NotificationManager;
 using MoviesSystem.Domain.Repositories;
 using MoviesSystem.Domain.Services;
 using MoviesSystem.ExternalService;
@@ -45,6 +46,9 @@ namespace MoviesSystem.App.API
                 .Get<EmailConfiguration>();
             services.AddSingleton(emailConfig);
             services.AddScoped<IEmailSender, EmailSender>();
+
+            services.AddScoped<INotificationManager, NotificationManager.NotificationManager>()
+                .AddScoped<HtmlGenerator>();
 
             services.AddScoped<IWatchlistService, WatchlistService>()
                 .AddScoped<IWatchlistRepository, WatchlistRepository>();

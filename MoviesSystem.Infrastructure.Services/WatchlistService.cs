@@ -28,6 +28,11 @@ namespace MoviesSystem.Infrastructure.Services
             return _watchlistRepository.Get(userId);
         }
 
+        public List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
+        {
+            return _watchlistRepository.GetUnwatchedMovies(unwatcheMoviesMinCount, excludedDaysCount);
+        }
+
         public void MarkAsWatched(int userId, string movieId)
         {
             _watchlistRepository.MarkAsWatched(userId, movieId);

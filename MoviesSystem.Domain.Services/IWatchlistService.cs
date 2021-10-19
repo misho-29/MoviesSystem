@@ -12,5 +12,6 @@ namespace MoviesSystem.Domain.Services
         void Add(int userId, string movieId);
         List<WatchlistItemGetModel> Get(int userId);
         void MarkAsWatched(int userId, string movieId);
+        List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount);
     }
 }

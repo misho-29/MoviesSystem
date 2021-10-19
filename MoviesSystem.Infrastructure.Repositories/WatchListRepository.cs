@@ -27,7 +27,7 @@ namespace MoviesSystem.Infrastructure.Repositories
             var watchlistItems = _context.Watchlist.Where(item => item.UserId == userId);
 
             return _mapper.Map<List<WatchlistItemGetModel>>(watchlistItems);
-            
+
         }
 
         public void Insert(int userId, string movieId)
@@ -46,6 +46,25 @@ namespace MoviesSystem.Infrastructure.Repositories
         {
             _context.Watchlist.First(item => item.UserId == userId && item.MovieId == movieId)
                 .IsWatched = true;
+        }
+
+        public List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
+        {
+            return _context.Watchlist
+                .Where(item => item.IsWatched == false)
+                .GroupBy(item => item.UserId)
+                .Where(grouped => grouped.Count() > unwatcheMoviesMinCount)
+                .Select(grouped => new UnwatchedMoviesGetModel
+                {
+                    UserId = grouped.Key,
+                    Movies = grouped.Where(item => item.LastNotificationDateTime < DateTime.Now.AddDays(-excludedDaysCount))
+                    .Select(item => new MovieModel
+                    {
+                        MovieId = item.MovieId,
+                        LastNotificationDateTime = item.LastNotificationDateTime,
+                    }).ToList(),
+
+                }).ToList();
         }
     }
 }
