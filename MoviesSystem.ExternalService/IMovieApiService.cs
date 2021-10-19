@@ -10,5 +10,6 @@ namespace MoviesSystem.ExternalService
     public interface IMovieApiService
     {
         Task<GetMoviesResponseModel> GetMovies(string title);
+        Task<GetMovieDetailsResponseModel> GetMovieDetails(string id);
     }
 }

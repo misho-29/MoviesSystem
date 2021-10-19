@@ -18,6 +18,30 @@ namespace MoviesSystem.ExternalService
             _client = factory.CreateClient("MoviesApi");
         }
 
+        public async Task<GetMovieDetailsResponseModel> GetMovieDetails(string id)
+        {
+            string options = "Wikipedia";
+
+            var url = string.Format("en/api/Title/{0}/{1}/{2}", "k_ki73yo05", id, options);
+            var result = new GetMovieDetailsResponseModel();
+
+            var response = await _client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+
+                result = JsonSerializer.Deserialize<GetMovieDetailsResponseModel>(stringResponse,
+                    new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            }
+            else
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+
+            return result;
+        }
+
         public async Task<GetMoviesResponseModel> GetMovies(string title)
         {
             var url = string.Format("/api/Search/{0}/{1}", "k_ki73yo05", title);
