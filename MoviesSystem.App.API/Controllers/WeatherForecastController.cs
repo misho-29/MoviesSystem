@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MoviesSystem.App.EmailService;
+using MoviesSystem.App.NotificationManager;
 using MoviesSystem.ExternalService;
 using System;
 using System.Collections.Generic;
@@ -22,18 +23,21 @@ namespace MoviesSystem.App.API.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IMovieApiService _movieApiService;
+        private readonly INotificationManager _notificationManager;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEmailSender emailSender, IMovieApiService movieApiService)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEmailSender emailSender, IMovieApiService movieApiService
+            , INotificationManager notificationManager)
         {
             _logger = logger;
             _emailSender = emailSender;
             _movieApiService = movieApiService;
+            _notificationManager = notificationManager;
         }
 
         [HttpGet]
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            await _movieApiService.GetMovieDetails("tt1375666");
+            await _notificationManager.NotifyAboutUnwatchedMovies();
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
