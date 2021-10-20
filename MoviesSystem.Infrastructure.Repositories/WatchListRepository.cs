@@ -50,20 +50,24 @@ namespace MoviesSystem.Infrastructure.Repositories
 
         public List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
         {
-            return _context.Watchlist
+            var userIds = _context.Watchlist
                 .Where(item => item.IsWatched == false)
                 .GroupBy(item => item.UserId)
                 .Where(grouped => grouped.Count() > unwatcheMoviesMinCount)
-                .Select(grouped => new UnwatchedMoviesGetModel
-                {
-                    UserId = grouped.Key,
-                    Movies = grouped.Where(item => item.LastNotificationDateTime < DateTime.Now.AddDays(-excludedDaysCount))
+                .Select(grouped => grouped.Key)
+                .ToList();
+
+
+            return userIds.Select(userId => new UnwatchedMoviesGetModel
+            {
+                UserId = userId,
+                Movies = _context.Watchlist.Where(item => item.UserId == userId && item.IsWatched == false 
+                    && item.LastNotificationDateTime < DateTime.Now.AddDays(-excludedDaysCount))
                     .Select(item => new MovieModel
                     {
                         MovieId = item.MovieId,
                         LastNotificationDateTime = item.LastNotificationDateTime,
                     }).ToList(),
-
                 }).ToList();
         }
     }
