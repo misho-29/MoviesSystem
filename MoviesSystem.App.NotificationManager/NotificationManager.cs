@@ -40,7 +40,7 @@ namespace MoviesSystem.App.NotificationManager
                 {
                     GetMovieDetailsResponseModel movieDetails = await _movieApiService.GetMovieDetails(userMovie.MovieId);
 
-                    if (topRatedMovieDetails != null && float.Parse(movieDetails.ImDbRating) > highestRating)
+                    if (movieDetails.ImDbRating != null && float.Parse(movieDetails.ImDbRating) > highestRating)
                     {
                         topRatedMovieDetails = movieDetails;
                         highestRating = float.Parse(movieDetails.ImDbRating);

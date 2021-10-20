@@ -62,7 +62,7 @@ namespace MoviesSystem.Infrastructure.Repositories
             {
                 UserId = userId,
                 Movies = _context.Watchlist.Where(item => item.UserId == userId && item.IsWatched == false 
-                    && item.LastNotificationDateTime < DateTime.Now.AddDays(-excludedDaysCount))
+                    && (item.LastNotificationDateTime == null || item.LastNotificationDateTime < DateTime.Now.AddDays(-excludedDaysCount)))
                     .Select(item => new MovieModel
                     {
                         MovieId = item.MovieId,
