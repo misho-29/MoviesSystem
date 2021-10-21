@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MoviesSystem.App.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]s")]
     public class UserController : ControllerBase
     {
         [HttpPost("{userId}/watchlist")]
