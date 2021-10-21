@@ -2,7 +2,7 @@
 using MoviesSystem.Domain.Models;
 using MoviesSystem.Domain.Repositories;
 using MoviesSystem.Infrastructure.Store;
-using MoviesSystem.Infrastructure.Store.Models;
+using Db = MoviesSystem.Infrastructure.Store.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace MoviesSystem.Infrastructure.Repositories
 
         public void Insert(int userId, string movieId)
         {
-            var record = new WatchListItem
+            var record = new Db.WatchListItem
             {
                 UserId = userId,
                 MovieId = movieId,
@@ -46,6 +46,8 @@ namespace MoviesSystem.Infrastructure.Repositories
         {
             _context.Watchlist.First(item => item.UserId == userId && item.MovieId == movieId)
                 .IsWatched = true;
+
+            _context.SaveChanges();
         }
 
         public List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
