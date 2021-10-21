@@ -56,7 +56,7 @@ namespace MoviesSystem.App.API
             services.AddSingleton<IMovieApiService, MovieApiService>();
             services.AddHttpClient("MoviesApi", options =>
             {
-                options.BaseAddress = new Uri("https://imdb-api.com/");
+                options.BaseAddress = new Uri(Configuration.GetSection("MoviesApiService")["Url"]);
             });
 
             services.AddSwaggerGen(c =>
