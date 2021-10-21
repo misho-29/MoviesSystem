@@ -59,18 +59,17 @@ namespace MoviesSystem.Infrastructure.Repositories
                 .Select(grouped => grouped.Key)
                 .ToList();
 
-
             return userIds.Select(userId => new UnwatchedMoviesGetModel
             {
                 UserId = userId,
-                Movies = _context.Watchlist.Where(item => item.UserId == userId && item.IsWatched == false 
+                Movies = _context.Watchlist.Where(item => item.UserId == userId && item.IsWatched == false
                     && (item.LastNotificationDateTime == null || item.LastNotificationDateTime < DateTime.Now.AddDays(-excludedDaysCount)))
                     .Select(item => new MovieModel
                     {
                         MovieId = item.MovieId,
                         LastNotificationDateTime = item.LastNotificationDateTime,
                     }).ToList(),
-                }).ToList();
+            }).ToList();
         }
     }
 }
