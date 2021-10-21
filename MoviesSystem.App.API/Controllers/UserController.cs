@@ -11,12 +11,12 @@ namespace MoviesSystem.App.API.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost("{userId}/watchlist")]
-        public void Post(string userId, [FromBody] string movieId)
+        public void Post(int userId, [FromBody] string movieId)
         {
         }
 
         [HttpGet("{userId}/watchlist")]
-        public void Get(string userId)
+        public void Get(int userId)
         {
         }
 

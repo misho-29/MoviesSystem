@@ -38,7 +38,7 @@ namespace MoviesSystem.App.API
         {
             services.AddControllers();
 
-            services.AddDbContextPool<MoviesDbContext>(
+            services.AddDbContext<MoviesDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             var emailConfig = Configuration
