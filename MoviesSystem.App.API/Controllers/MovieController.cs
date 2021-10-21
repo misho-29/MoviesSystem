@@ -18,7 +18,7 @@ namespace MoviesSystem.App.API.Controllers
             _movieApiService = movieApiService;
         }
 
-        [HttpGet("{title}")]
+        [HttpGet]
         public async Task<IActionResult> Get(string title)
         {
             var response = await _movieApiService.GetMovies(title);
