@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace MoviesSystem.Domain.Models.Validators
 {
-    public class UpdateWatchlistItemStatusRequestValidator : AbstractValidator<UpdateWatchlistItemStatusRequest>
+    public class AddWatchlistItemRequestForMovieValidator : AbstractValidator<AddWatchlistItemRequestForMovie>
     {
-        public UpdateWatchlistItemStatusRequestValidator()
+        public AddWatchlistItemRequestForMovieValidator()
         {
-            RuleFor(requetst => requetst.UserId)
-                .GreaterThan(0);
             RuleFor(request => request.MovieId)
                 .NotEmpty();
         }
