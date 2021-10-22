@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviesSystem.App.EmailService;
 using MoviesSystem.App.NotificationManager;
+using MoviesSystem.Domain.Models;
 using MoviesSystem.Domain.Models.Validators;
 using MoviesSystem.Domain.Repositories;
 using MoviesSystem.Domain.Services;
@@ -38,8 +39,16 @@ namespace MoviesSystem.App.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<GetMovieByTitleRequestValidator>());
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(typeof(ValidationFilter));
+            })
+            .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<GetMovieByTitleRequestValidator>());
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             services.AddDbContext<MoviesDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
