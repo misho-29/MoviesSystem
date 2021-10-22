@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MoviesSystem.App.EmailService;
 using MoviesSystem.App.NotificationManager;
+using MoviesSystem.Domain.Models.Validators;
 using MoviesSystem.Domain.Repositories;
 using MoviesSystem.Domain.Services;
 using MoviesSystem.ExternalService;
@@ -36,7 +38,8 @@ namespace MoviesSystem.App.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<GetMovieByTitleRequestValidator>());
 
             services.AddDbContext<MoviesDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -62,6 +65,7 @@ namespace MoviesSystem.App.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesSystem.App.API", Version = "v1" });
+                c.DescribeAllParametersInCamelCase();
             });
 
             services.AddAutoMapper(typeof(WatchlistProfile));

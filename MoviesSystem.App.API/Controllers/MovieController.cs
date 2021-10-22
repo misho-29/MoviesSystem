@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesSystem.ExternalService;
+using MoviesSystem.ExternalService.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,9 @@ namespace MoviesSystem.App.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string title)
+        public async Task<IActionResult> Get([FromQuery]GetMovieByTitleRequest request)
         {
-            var response = await _movieApiService.GetMovies(title);
+            var response = await _movieApiService.GetMovies(request.Title);
 
             return Ok(response.Results);
         }

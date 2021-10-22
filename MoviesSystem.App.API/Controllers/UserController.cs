@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoviesSystem.Domain.Models.RequestModels;
 using MoviesSystem.Domain.Services;
 using System;
 using System.Collections.Generic;
@@ -20,24 +21,24 @@ namespace MoviesSystem.App.API.Controllers
         }
 
         [HttpPost("{userId}/watchlist")]
-        public IActionResult Post(int userId, [FromBody] string movieId)
+        public IActionResult Post([FromRoute] AddWatchlistItemRequestForUser requestForUser, [FromBody] AddWatchlistItemRequestForMovie requestForMovie)
         {
-            _watchlistService.Add(userId, movieId);
+            _watchlistService.Add(requestForUser.UserId, requestForMovie.MovieId);
             return NoContent();
         }
 
         [HttpGet("{userId}/watchlist")]
-        public IActionResult Get(int userId)
+        public IActionResult Get([FromRoute] GetUserWatchlistRequest request)
         {
-            var userWatchlist = _watchlistService.Get(userId);
+            var userWatchlist = _watchlistService.Get(request.UserId);
 
             return Ok(userWatchlist);
         }
 
         [HttpPatch("{userId}/watchlist/{movieId}/watched")]
-        public IActionResult Patch(int userId, string movieId)
+        public IActionResult Patch([FromRoute] UpdateWatchlistItemStatusRequest request)
         {
-            _watchlistService.MarkAsWatched(userId, movieId);
+            _watchlistService.MarkAsWatched(request.UserId, request.MovieId);
 
             return NoContent();
         }
