@@ -5,6 +5,7 @@ using MoviesSystem.ExternalService.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MoviesSystem.App.API.Controllers
@@ -25,12 +26,15 @@ namespace MoviesSystem.App.API.Controllers
         /// Finds movies by title
         /// </summary>
         [HttpGet]
-        //[ProducesResponseType(typeof(GenericResultType<>), 200)]
+        [ProducesResponseType(typeof(GenericResult<List<Models.Responses.MovieModel>>), 200)]
+        [ProducesResponseType(typeof(GenericResult<List<Models.Responses.MovieModel>>), 400)]
         public async Task<IActionResult> Get([FromQuery]GetMovieByTitleRequest request)
         {
             var response = await _movieApiService.GetMovies(request.Title);
 
-            return Ok(response.Results);
+            var result = new GenericResult<List<Models.Responses.MovieModel>>(HttpStatusCode.OK, response.Results);
+
+            return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
         }
     }
 }
