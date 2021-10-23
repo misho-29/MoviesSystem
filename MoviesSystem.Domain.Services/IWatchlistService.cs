@@ -10,9 +10,9 @@ namespace MoviesSystem.Domain.Services
 {
     public interface IWatchlistService
     {
-        GenericResultType<object> Add(int userId, string movieId);
-        GenericResultType<List<WatchlistItemGetModel>> Get(int userId);
-        GenericResultType<object> MarkAsWatched(int userId, string movieId);
-        List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount);
+        GenericResult<object> Add(int userId, string movieId);
+        GenericResult<List<WatchlistItemResponse>> Get(int userId);
+        GenericResult<object> MarkAsWatched(int userId, string movieId);
+        List<UnwatchedMoviesResponse> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount);
     }
 }

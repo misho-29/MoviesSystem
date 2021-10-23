@@ -1,8 +1,10 @@
 ﻿using MoviesSystem.App.EmailService;
 using MoviesSystem.Domain.Models;
+using MoviesSystem.Domain.Models.Responses;
 using MoviesSystem.Domain.Services;
 using MoviesSystem.ExternalService;
 using MoviesSystem.ExternalService.Models;
+using MoviesSystem.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,16 +31,16 @@ namespace MoviesSystem.App.NotificationManager
 
         public async Task NotifyAboutUnwatchedMovies()
         {
-            List<UnwatchedMoviesGetModel> watchlists = _watchlistService.GetUnwatchedMovies(3, 30);
+            List<UnwatchedMoviesResponse> watchlists = _watchlistService.GetUnwatchedMovies(3, 30);
 
             foreach (var userWatchlist in watchlists)
             {
-                GetMovieDetailsResponseModel topRatedMovieDetails = new GetMovieDetailsResponseModel();
+                MovieDetailsResponse topRatedMovieDetails = new MovieDetailsResponse();
                 float highestRating = 0;
 
                 foreach (var userMovie in userWatchlist.Movies)
                 {
-                    GetMovieDetailsResponseModel movieDetails = await _movieApiService.GetMovieDetails(userMovie.MovieId);
+                    MovieDetailsResponse movieDetails = await _movieApiService.GetMovieDetails(userMovie.MovieId);
 
                     if (movieDetails.ImDbRating != null && float.Parse(movieDetails.ImDbRating) > highestRating)
                     {

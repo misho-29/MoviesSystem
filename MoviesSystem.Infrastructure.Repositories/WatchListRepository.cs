@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MoviesSystem.Domain.Models.Responses;
 
 namespace MoviesSystem.Infrastructure.Repositories
 {
@@ -22,11 +23,11 @@ namespace MoviesSystem.Infrastructure.Repositories
             _mapper = mapper;
         }
 
-        public List<WatchlistItemGetModel> Get(int userId)
+        public List<WatchlistItemResponse> Get(int userId)
         {
             var watchlistItems = _context.Watchlist.Where(item => item.UserId == userId);
 
-            return _mapper.Map<List<WatchlistItemGetModel>>(watchlistItems);
+            return _mapper.Map<List<WatchlistItemResponse>>(watchlistItems);
 
         }
 
@@ -50,7 +51,7 @@ namespace MoviesSystem.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
+        public List<UnwatchedMoviesResponse> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
         {
             var userIds = _context.Watchlist
                 .Where(item => item.IsWatched == false)
@@ -59,7 +60,7 @@ namespace MoviesSystem.Infrastructure.Repositories
                 .Select(grouped => grouped.Key)
                 .ToList();
 
-            return userIds.Select(userId => new UnwatchedMoviesGetModel
+            return userIds.Select(userId => new UnwatchedMoviesResponse
             {
                 UserId = userId,
                 Movies = _context.Watchlist.Where(item => item.UserId == userId && item.IsWatched == false

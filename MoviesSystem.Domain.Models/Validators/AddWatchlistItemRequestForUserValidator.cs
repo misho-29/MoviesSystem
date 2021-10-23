@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MoviesSystem.Domain.Models.RequestModels;
+using MoviesSystem.Domain.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;

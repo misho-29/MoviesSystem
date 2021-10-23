@@ -1,4 +1,4 @@
-﻿using MoviesSystem.ExternalService.Models;
+﻿using MoviesSystem.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace MoviesSystem.ExternalService
 {
     public interface IMovieApiService
     {
-        Task<GetMoviesResponseModel> GetMovies(string title);
-        Task<GetMovieDetailsResponseModel> GetMovieDetails(string id);
+        Task<MoviesResponse> GetMovies(string title);
+        Task<MovieDetailsResponse> GetMovieDetails(string id);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesSystem.Domain.Models;
-using MoviesSystem.Domain.Models.RequestModels;
+using MoviesSystem.Domain.Models.Requests;
 using MoviesSystem.Domain.Models.Responses;
 using MoviesSystem.Domain.Services;
 using Swashbuckle.AspNetCore.Annotations;
@@ -29,7 +29,7 @@ namespace MoviesSystem.App.API.Controllers
         /// Adds movie to watchlist
         /// </summary>
         [ProducesResponseType(204)]
-        [ProducesResponseType(typeof(GenericResultType<object>), 400)]
+        [ProducesResponseType(typeof(GenericResult<object>), 400)]
         [HttpPost("{userId}/watchlist")]
         public IActionResult Post([FromRoute] AddWatchlistItemRequestForUser requestForUser, [FromBody] AddWatchlistItemRequestForMovie requestForMovie)
         {
@@ -40,8 +40,8 @@ namespace MoviesSystem.App.API.Controllers
         /// <summary>
         /// Gets user watchlist
         /// </summary>
-        [ProducesResponseType(typeof(GenericResultType<WatchlistItemGetModel>), 200)]
-        [ProducesResponseType(typeof(GenericResultType<WatchlistItemGetModel>), 400)]
+        [ProducesResponseType(typeof(GenericResult<WatchlistItemResponse>), 200)]
+        [ProducesResponseType(typeof(GenericResult<WatchlistItemResponse>), 400)]
         [HttpGet("{userId}/watchlist")]
         public IActionResult Get([FromRoute] GetUserWatchlistRequest request)
         {
@@ -53,7 +53,7 @@ namespace MoviesSystem.App.API.Controllers
         /// Marks movie as watched
         /// </summary>
         [ProducesResponseType(204)]
-        [ProducesResponseType(typeof(GenericResultType<object>), 400)]
+        [ProducesResponseType(typeof(GenericResult<object>), 400)]
         [HttpPatch("{userId}/watchlist/{movieId}/watched")]
         public IActionResult Patch([FromRoute] UpdateWatchlistItemStatusRequest request)
         {

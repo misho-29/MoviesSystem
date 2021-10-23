@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesSystem.Domain.Models
+namespace MoviesSystem.Domain.Models.Responses
 {
-    public class UnwatchedMoviesGetModel
+    public class UnwatchedMoviesResponse
     {
         public int UserId { get; set; }
         public List<MovieModel> Movies { get; set; }

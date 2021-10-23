@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace MoviesSystem.Domain.Models.Responses
 {
-    public class GenericResultType<T>
+    public class GenericResult<T>
     {
         public HttpStatusCode StatusCode { get; }
         public List<FieldError> FieldErrorMessages { get; set; }
         public string AdditionalErrorMessage { get; }
         public T Data { get; }
 
-        public GenericResultType(HttpStatusCode statusCode, T data, List<FieldError> fieldErrorMessages = null, string additionalErrorMessage = null)
+        public GenericResult(HttpStatusCode statusCode, T data, List<FieldError> fieldErrorMessages = null, string additionalErrorMessage = null)
         {
             StatusCode = statusCode;
             FieldErrorMessages = fieldErrorMessages;

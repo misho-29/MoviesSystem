@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesSystem.Domain.Models
+namespace MoviesSystem.Domain.Models.Requests
 {
-    public class WatchlistItemGetModel
+    public class UpdateWatchlistItemStatusRequest
     {
+        public int UserId { get; set; }
         public string MovieId { get; set; }
-        public bool IsWatched { get; set; }
     }
 }

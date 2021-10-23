@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesSystem.ExternalService.Models
+namespace MoviesSystem.Models.Responses
 {
-    public class GetMoviesResponseModel
+    public class MoviesResponse
     {
         public string SearchType { get; set; }
         public string Expression { get; set; }

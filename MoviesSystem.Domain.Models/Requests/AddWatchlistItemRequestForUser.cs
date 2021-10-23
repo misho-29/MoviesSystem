@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesSystem.Domain.Models.RequestModels
+namespace MoviesSystem.Domain.Models.Requests
 {
     public class AddWatchlistItemRequestForUser
     {

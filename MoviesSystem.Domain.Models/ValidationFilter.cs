@@ -34,7 +34,7 @@ namespace MoviesSystem.Domain.Models
                         errors.Add(errorModel);
                     }
                 }
-                GenericResultType<object> result = new GenericResultType<object>(HttpStatusCode.BadRequest, errors, null, null);
+                GenericResult<object> result = new GenericResult<object>(HttpStatusCode.BadRequest, errors, null, null);
                 context.Result = new ObjectResult(result) { StatusCode = (int)result.StatusCode };
             }
         }

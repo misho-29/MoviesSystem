@@ -20,30 +20,30 @@ namespace MoviesSystem.Infrastructure.Services
             _watchlistRepository = watchlistRepository;
         }
 
-        public GenericResultType<object> Add(int userId, string movieId)
+        public GenericResult<object> Add(int userId, string movieId)
         {
             _watchlistRepository.Insert(userId, movieId);
 
-            return new GenericResultType<object>(HttpStatusCode.NoContent, null);
+            return new GenericResult<object>(HttpStatusCode.NoContent, null);
         }
 
-        public GenericResultType<List<WatchlistItemGetModel>> Get(int userId)
+        public GenericResult<List<WatchlistItemResponse>> Get(int userId)
         {
             var data = _watchlistRepository.Get(userId);
 
-            return new GenericResultType<List<WatchlistItemGetModel>>(HttpStatusCode.OK, data);
+            return new GenericResult<List<WatchlistItemResponse>>(HttpStatusCode.OK, data);
         }
 
-        public List<UnwatchedMoviesGetModel> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
+        public List<UnwatchedMoviesResponse> GetUnwatchedMovies(int unwatcheMoviesMinCount, int excludedDaysCount)
         {
             return _watchlistRepository.GetUnwatchedMovies(unwatcheMoviesMinCount, excludedDaysCount);
         }
 
-        public GenericResultType<object> MarkAsWatched(int userId, string movieId)
+        public GenericResult<object> MarkAsWatched(int userId, string movieId)
         {
             _watchlistRepository.MarkAsWatched(userId, movieId);
 
-            return new GenericResultType<object>(HttpStatusCode.NoContent, null);
+            return new GenericResult<object>(HttpStatusCode.NoContent, null);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MoviesSystem.ExternalService.Models;
+using MoviesSystem.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,12 @@ namespace MoviesSystem.ExternalService
             _apiKey = _configuration.GetSection("MoviesApiService")["ApiKey"];
         }
 
-        public async Task<GetMovieDetailsResponseModel> GetMovieDetails(string id)
+        public async Task<MovieDetailsResponse> GetMovieDetails(string id)
         {
             string options = "Wikipedia";
 
             var url = string.Format("en/api/Title/{0}/{1}/{2}", _apiKey, id, options);
-            var result = new GetMovieDetailsResponseModel();
+            var result = new MovieDetailsResponse();
 
             var response = await _client.GetAsync(url);
 
@@ -36,7 +37,7 @@ namespace MoviesSystem.ExternalService
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
 
-                result = JsonSerializer.Deserialize<GetMovieDetailsResponseModel>(stringResponse,
+                result = JsonSerializer.Deserialize<MovieDetailsResponse>(stringResponse,
                     new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             }
             else
@@ -47,10 +48,10 @@ namespace MoviesSystem.ExternalService
             return result;
         }
 
-        public async Task<GetMoviesResponseModel> GetMovies(string title)
+        public async Task<MoviesResponse> GetMovies(string title)
         {
             var url = string.Format("/api/Search/{0}/{1}", _apiKey, title);
-            var result = new GetMoviesResponseModel();
+            var result = new MoviesResponse();
 
             var response = await _client.GetAsync(url);
 
@@ -58,7 +59,7 @@ namespace MoviesSystem.ExternalService
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
 
-                result = JsonSerializer.Deserialize<GetMoviesResponseModel>(stringResponse,
+                result = JsonSerializer.Deserialize<MoviesResponse>(stringResponse,
                     new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             }
             else
