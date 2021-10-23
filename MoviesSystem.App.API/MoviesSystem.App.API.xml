@@ -4,5 +4,20 @@
         <name>MoviesSystem.App.API</name>
     </assembly>
     <members>
+        <member name="M:MoviesSystem.App.API.Controllers.UserController.Post(MoviesSystem.Domain.Models.RequestModels.AddWatchlistItemRequestForUser,MoviesSystem.Domain.Models.RequestModels.AddWatchlistItemRequestForMovie)">
+            <summary>
+            Adds movie to watchlist
+            </summary>
+        </member>
+        <member name="M:MoviesSystem.App.API.Controllers.UserController.Get(MoviesSystem.Domain.Models.RequestModels.GetUserWatchlistRequest)">
+            <summary>
+            Gets user watchlist
+            </summary>
+        </member>
+        <member name="M:MoviesSystem.App.API.Controllers.UserController.Patch(MoviesSystem.Domain.Models.RequestModels.UpdateWatchlistItemStatusRequest)">
+            <summary>
+            Marks movie as watched
+            </summary>
+        </member>
     </members>
 </doc>

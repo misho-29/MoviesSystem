@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoviesSystem.Domain.Models;
 using MoviesSystem.Domain.Models.RequestModels;
+using MoviesSystem.Domain.Models.Responses;
 using MoviesSystem.Domain.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace MoviesSystem.App.API.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     [Route("api/[controller]s")]
     public class UserController : ControllerBase
@@ -22,6 +25,11 @@ namespace MoviesSystem.App.API.Controllers
             _watchlistService = watchlistService;
         }
 
+        /// <summary>
+        /// Adds movie to watchlist
+        /// </summary>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(GenericResultType<object>), 400)]
         [HttpPost("{userId}/watchlist")]
         public IActionResult Post([FromRoute] AddWatchlistItemRequestForUser requestForUser, [FromBody] AddWatchlistItemRequestForMovie requestForMovie)
         {
@@ -29,6 +37,11 @@ namespace MoviesSystem.App.API.Controllers
             return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
         }
 
+        /// <summary>
+        /// Gets user watchlist
+        /// </summary>
+        [ProducesResponseType(typeof(GenericResultType<WatchlistItemGetModel>), 200)]
+        [ProducesResponseType(typeof(GenericResultType<WatchlistItemGetModel>), 400)]
         [HttpGet("{userId}/watchlist")]
         public IActionResult Get([FromRoute] GetUserWatchlistRequest request)
         {
@@ -36,6 +49,11 @@ namespace MoviesSystem.App.API.Controllers
             return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
         }
 
+        /// <summary>
+        /// Marks movie as watched
+        /// </summary>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(typeof(GenericResultType<object>), 400)]
         [HttpPatch("{userId}/watchlist/{movieId}/watched")]
         public IActionResult Patch([FromRoute] UpdateWatchlistItemStatusRequest request)
         {
