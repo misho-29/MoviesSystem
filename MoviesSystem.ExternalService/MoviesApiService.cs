@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace MoviesSystem.ExternalService
 {
-    public class MovieApiService : IMovieApiService
+    public class MoviesApiService : IMoviesApiService
     {
         private readonly HttpClient _client;
         private readonly IConfiguration _configuration;
         private readonly string _apiKey;
 
-        public MovieApiService(IHttpClientFactory factory, IConfiguration configuration)
+        public MoviesApiService(IHttpClientFactory factory, IConfiguration configuration)
         {
             _client = factory.CreateClient("MoviesApi");
             _configuration = configuration;

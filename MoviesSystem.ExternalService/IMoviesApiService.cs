@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoviesSystem.ExternalService
 {
-    public interface IMovieApiService
+    public interface IMoviesApiService
     {
         Task<MoviesResponse> GetMovies(string title);
         Task<MovieDetailsResponse> GetMovieDetails(string id);

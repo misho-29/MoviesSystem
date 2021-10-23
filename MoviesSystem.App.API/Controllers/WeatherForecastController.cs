@@ -22,10 +22,10 @@ namespace MoviesSystem.App.API.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly IMovieApiService _movieApiService;
+        private readonly IMoviesApiService _movieApiService;
         private readonly INotificationManager _notificationManager;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEmailSender emailSender, IMovieApiService movieApiService
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IEmailSender emailSender, IMoviesApiService movieApiService
             , INotificationManager notificationManager)
         {
             _logger = logger;

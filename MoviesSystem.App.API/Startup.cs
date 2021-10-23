@@ -67,7 +67,7 @@ namespace MoviesSystem.App.API
             services.AddScoped<IWatchlistService, WatchlistService>()
                 .AddScoped<IWatchlistRepository, WatchlistRepository>();
 
-            services.AddSingleton<IMovieApiService, MovieApiService>();
+            services.AddSingleton<IMoviesApiService, MoviesApiService>();
             services.AddHttpClient("MoviesApi", options =>
             {
                 options.BaseAddress = new Uri(Configuration.GetSection("MoviesApiService")["Url"]);

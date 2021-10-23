@@ -16,11 +16,11 @@ namespace MoviesSystem.App.NotificationManager
     public class NotificationManager : INotificationManager
     {
         private readonly IWatchlistService _watchlistService;
-        private readonly IMovieApiService _movieApiService;
+        private readonly IMoviesApiService _movieApiService;
         private readonly IEmailSender _emailSender;
         private readonly HtmlGenerator _htmlGenerator;
 
-        public NotificationManager(IWatchlistService watchlistService, IMovieApiService movieApiService, IEmailSender emailSender
+        public NotificationManager(IWatchlistService watchlistService, IMoviesApiService movieApiService, IEmailSender emailSender
             , HtmlGenerator htmlGenerator)
         {
             _watchlistService = watchlistService;
