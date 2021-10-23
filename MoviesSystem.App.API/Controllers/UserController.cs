@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesSystem.Domain.Models.RequestModels;
 using MoviesSystem.Domain.Services;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace MoviesSystem.App.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IWatchlistService _watchlistService;
+
 
         public UserController(IWatchlistService watchlistService)
         {

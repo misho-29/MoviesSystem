@@ -22,7 +22,9 @@ using MoviesSystem.Infrastructure.Services;
 using MoviesSystem.Infrastructure.Store;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace MoviesSystem.App.API
@@ -75,6 +77,10 @@ namespace MoviesSystem.App.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesSystem.App.API", Version = "v1" });
                 c.DescribeAllParametersInCamelCase();
+
+                var xmlFile = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             services.AddAutoMapper(typeof(WatchlistProfile));
