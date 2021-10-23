@@ -23,24 +23,22 @@ namespace MoviesSystem.App.API.Controllers
         [HttpPost("{userId}/watchlist")]
         public IActionResult Post([FromRoute] AddWatchlistItemRequestForUser requestForUser, [FromBody] AddWatchlistItemRequestForMovie requestForMovie)
         {
-            _watchlistService.Add(requestForUser.UserId, requestForMovie.MovieId);
-            return NoContent();
+            var result = _watchlistService.Add(requestForUser.UserId, requestForMovie.MovieId);
+            return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
         }
 
         [HttpGet("{userId}/watchlist")]
         public IActionResult Get([FromRoute] GetUserWatchlistRequest request)
         {
-            var userWatchlist = _watchlistService.Get(request.UserId);
-
-            return Ok(userWatchlist);
+            var result = _watchlistService.Get(request.UserId);
+            return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
         }
 
         [HttpPatch("{userId}/watchlist/{movieId}/watched")]
         public IActionResult Patch([FromRoute] UpdateWatchlistItemStatusRequest request)
         {
-            _watchlistService.MarkAsWatched(request.UserId, request.MovieId);
-
-            return NoContent();
+            var result = _watchlistService.MarkAsWatched(request.UserId, request.MovieId);
+            return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
         }
     }
 }

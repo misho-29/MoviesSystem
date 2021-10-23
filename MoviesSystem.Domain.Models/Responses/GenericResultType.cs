@@ -14,7 +14,7 @@ namespace MoviesSystem.Domain.Models.Responses
         public string AdditionalErrorMessage { get; }
         public T Data { get; }
 
-        public GenericResultType(HttpStatusCode statusCode, List<FieldError> fieldErrorMessages, string additionalErrorMessage, T data)
+        public GenericResultType(HttpStatusCode statusCode, T data, List<FieldError> fieldErrorMessages = null, string additionalErrorMessage = null)
         {
             StatusCode = statusCode;
             FieldErrorMessages = fieldErrorMessages;
