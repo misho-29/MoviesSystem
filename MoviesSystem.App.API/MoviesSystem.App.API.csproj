@@ -23,8 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoviesSystem.App.EmailService\MoviesSystem.App.EmailService.csproj" />
-    <ProjectReference Include="..\MoviesSystem.App.NotificationManager\MoviesSystem.App.NotificationManager.csproj" />
     <ProjectReference Include="..\MoviesSystem.ExternalService\MoviesSystem.ExternalService.csproj" />
     <ProjectReference Include="..\MoviesSystem.Infrastructure.Mappers\MoviesSystem.Infrastructure.Mappers.csproj" />
     <ProjectReference Include="..\MoviesSystem.Infrastructure.Repositories\MoviesSystem.Infrastructure.Repositories.csproj" />
