@@ -14,13 +14,13 @@ namespace MoviesSystem.App.API.Controllers
 {
     [Produces("application/json")]
     [ApiController]
-    [Route("api/[controller]s")]
-    public class UserController : ControllerBase
+    [Route("api/[controller]")]
+    public class UsersController : ControllerBase
     {
         private readonly IWatchlistService _watchlistService;
 
 
-        public UserController(IWatchlistService watchlistService)
+        public UsersController(IWatchlistService watchlistService)
         {
             _watchlistService = watchlistService;
         }

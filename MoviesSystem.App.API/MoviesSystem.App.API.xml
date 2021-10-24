@@ -4,22 +4,22 @@
         <name>MoviesSystem.App.API</name>
     </assembly>
     <members>
-        <member name="M:MoviesSystem.App.API.Controllers.MovieController.Get(MoviesSystem.ExternalService.Models.Requests.GetMovieByTitleRequest)">
+        <member name="M:MoviesSystem.App.API.Controllers.MoviesController.Get(MoviesSystem.ExternalService.Models.Requests.GetMovieByTitleRequest)">
             <summary>
             Finds movies by title
             </summary>
         </member>
-        <member name="M:MoviesSystem.App.API.Controllers.UserController.Post(MoviesSystem.Domain.Models.Requests.AddWatchlistItemRequestForUser,MoviesSystem.Domain.Models.Requests.AddWatchlistItemRequestForMovie)">
+        <member name="M:MoviesSystem.App.API.Controllers.UsersController.Post(MoviesSystem.Domain.Models.Requests.AddWatchlistItemRequestForUser,MoviesSystem.Domain.Models.Requests.AddWatchlistItemRequestForMovie)">
             <summary>
             Adds movie to watchlist
             </summary>
         </member>
-        <member name="M:MoviesSystem.App.API.Controllers.UserController.Get(MoviesSystem.Domain.Models.Requests.GetUserWatchlistRequest)">
+        <member name="M:MoviesSystem.App.API.Controllers.UsersController.Get(MoviesSystem.Domain.Models.Requests.GetUserWatchlistRequest)">
             <summary>
             Gets user watchlist
             </summary>
         </member>
-        <member name="M:MoviesSystem.App.API.Controllers.UserController.Patch(MoviesSystem.Domain.Models.Requests.UpdateWatchlistItemStatusRequest)">
+        <member name="M:MoviesSystem.App.API.Controllers.UsersController.Patch(MoviesSystem.Domain.Models.Requests.UpdateWatchlistItemStatusRequest)">
             <summary>
             Marks movie as watched
             </summary>

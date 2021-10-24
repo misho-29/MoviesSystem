@@ -36,7 +36,7 @@ namespace MoviesSystem.NotificationSender.Worker
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    // Configure main items 
+                    // Add main items 
 
                     IConfiguration configuration = hostContext.Configuration;
 
@@ -63,7 +63,7 @@ namespace MoviesSystem.NotificationSender.Worker
 
                     services.AddAutoMapper(typeof(WatchlistProfile));
 
-                    // Configure jobs
+                    // Add job stuff
 
                     services.AddSingleton<IJobFactory, MyJobFactory>();
                     services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
@@ -71,11 +71,10 @@ namespace MoviesSystem.NotificationSender.Worker
                     #region Adding JobType
                     services.AddSingleton<NotificationJob>();
                     #endregion
-
+                    
                     #region Adding Jobs 
                     List<JobMetadata> jobMetadatas = new List<JobMetadata>();
                     jobMetadatas.Add(new JobMetadata(Guid.NewGuid(), typeof(NotificationJob), "Notify Job", "0 30 19 ? * SUN *"));
-
                     services.AddSingleton(jobMetadatas);
                     #endregion
 

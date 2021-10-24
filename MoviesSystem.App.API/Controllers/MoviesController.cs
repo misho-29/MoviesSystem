@@ -12,12 +12,12 @@ namespace MoviesSystem.App.API.Controllers
 {
     [Produces("application/json")]
     [ApiController]
-    [Route("api/[controller]s")]
-    public class MovieController : ControllerBase
+    [Route("api/[controller]")]
+    public class MoviesController : ControllerBase
     {
         private readonly IMoviesApiService _movieApiService;
 
-        public MovieController(IMoviesApiService movieApiService)
+        public MoviesController(IMoviesApiService movieApiService)
         {
             _movieApiService = movieApiService;
         }
