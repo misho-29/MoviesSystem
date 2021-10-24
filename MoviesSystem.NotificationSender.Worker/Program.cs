@@ -74,7 +74,7 @@ namespace MoviesSystem.NotificationSender.Worker
 
                     #region Adding Jobs 
                     List<JobMetadata> jobMetadatas = new List<JobMetadata>();
-                    jobMetadatas.Add(new JobMetadata(Guid.NewGuid(), typeof(NotificationJob), "Notify Job", "0/10 * * * * ?"));
+                    jobMetadatas.Add(new JobMetadata(Guid.NewGuid(), typeof(NotificationJob), "Notify Job", "0 30 19 ? * SUN *"));
 
                     services.AddSingleton(jobMetadatas);
                     #endregion

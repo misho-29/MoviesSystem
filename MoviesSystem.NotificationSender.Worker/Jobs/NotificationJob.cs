@@ -11,15 +11,19 @@ namespace MoviesSystem.NotificationSender.Worker.Jobs
 {
     class NotificationJob : IJob
     {
-        private readonly ILogger<NotificationJob> _logger;
+        private readonly IServiceProvider _serviceProvider;
 
-        public NotificationJob(ILogger<NotificationJob> logger)
+        public NotificationJob(IServiceProvider serviceProvider)
         {
-            _logger = logger;
+            _serviceProvider = serviceProvider;
         }
         public Task Execute(IJobExecutionContext context)
         {
-            _logger.LogInformation("1");
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var notificationManager = scope.ServiceProvider.GetService<INotificationManager>();
+                notificationManager.NotifyAboutUnwatchedMovies();
+            }
             return Task.CompletedTask;
         }
     }
