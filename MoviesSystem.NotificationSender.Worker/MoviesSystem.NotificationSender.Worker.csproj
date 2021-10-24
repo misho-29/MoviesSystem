@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>dotnet-MoviesSystem.NotificationSender.Worker-7763FE84-3D68-4BA7-ADD2-9188D64739DC</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Quartz" Version="3.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoviesSystem.App.EmailService\MoviesSystem.App.EmailService.csproj" />
+    <ProjectReference Include="..\MoviesSystem.App.NotificationManager\MoviesSystem.App.NotificationManager.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Domain.Repositories\MoviesSystem.Domain.Repositories.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Domain.Services\MoviesSystem.Domain.Services.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Infrastructure.Mappers\MoviesSystem.Infrastructure.Mappers.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Infrastructure.Repositories\MoviesSystem.Infrastructure.Repositories.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Infrastructure.Services\MoviesSystem.Infrastructure.Services.csproj" />
+    <ProjectReference Include="..\MoviesSystem.Infrastructure.Store\MoviesSystem.Infrastructure.Store.csproj" />
+  </ItemGroup>
+</Project>
